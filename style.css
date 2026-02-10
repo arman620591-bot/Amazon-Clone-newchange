@@ -5,7 +5,8 @@
 }
 
 body{
-    background-color: lightgray;
+    background-color: rgb(211, 211, 211);
+    overflow-x: hidden;
 }
 
 header{
@@ -195,17 +196,73 @@ img:hover{
 
 /* Hero Section */
 
-
-.hero-section{
+.background-Image{
+    position: relative;
+    height: 600px;
     background-image: url("https://images-eu.ssl-images-amazon.com/images/G/31/CookwareDining/JanART26/GW/Desktop/Endstmrw/3000x1200tonightunrec._CB773710526_.jpg");
     background-size: cover;
-    height: 600px;
-    margin: 0 10px;
-    padding: 1px;
+    background-position: center;
+    z-index: 1;
+}
+
+.background-Image::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 220px;
+
+    background-image: inherit;
+    background-size: cover;
+    background-position: bottom;
+
+    filter: blur(18px);
+    transform: scale(1.1);
+
+    mask-image: linear-gradient(
+        to top,
+        black 0%,
+        black 40%,
+        transparent 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to top,
+        black 0%,
+        black 40%,
+        transparent 100%
+    );
+}
+
+.background-Image::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 280px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(211, 211, 211, 0) 0%,
+        rgba(211, 211, 211, 0.8) 60%,
+        rgba(211, 211, 211, 1) 100%
+    );
+
+    pointer-events: none;
+}
+
+
+.hero-section{
+    position: relative;
+    z-index: 3;
+    margin-top: -270px;
+    padding: 0 10px;
 }
 
 .content-container-01{
-    margin: 250px 10px 0 10px;
+    margin: 0 10px 0 10px;
     display: grid;
     grid-template-columns: repeat(4 , 1fr);
     gap: 10px;
@@ -317,7 +374,7 @@ img:hover{
 }
 
 .other-section{
-    margin-top: 1420px;
+    margin-top: 30px;
 }
 
 .recommendations{
@@ -422,6 +479,11 @@ img:hover{
     align-items: center;
     gap: 100px;
     padding: 25px 0;
+}
+
+.amazon-logo-02:hover{
+    cursor: pointer;
+    border: none;
 }
 
 .language-nation{
